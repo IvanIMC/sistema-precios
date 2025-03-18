@@ -131,7 +131,7 @@
                         <th>Marca</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tableBody">
                     <!-- Datos dinámicos -->
                 </tbody>
             </table>
@@ -154,6 +154,36 @@
             } else {
                 fileName.textContent = "Sin archivo seleccionado";
             }
+        }
+        function processExcel() {
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length === 0) {
+                alert("Por favor, selecciona un archivo primero.");
+                return;
+            }
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const data = new Uint8Array(e.target.result);
+                const workbook = XLSX.read(data, { type: "array" });
+                const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                const jsonData = XLSX.utils.sheet_to_json(sheet);
+                displayData(jsonData);
+            };
+            reader.readAsArrayBuffer(file);
+        }
+        function displayData(data) {
+            const tableBody = document.getElementById("tableBody");
+            tableBody.innerHTML = "";
+            data.forEach(row => {
+                let tr = document.createElement("tr");
+                Object.values(row).forEach(value => {
+                    let td = document.createElement("td");
+                    td.textContent = value;
+                    tr.appendChild(td);
+                });
+                tableBody.appendChild(tr);
+            });
         }
     </script>
 </body>
