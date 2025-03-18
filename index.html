@@ -158,27 +158,14 @@
     <div class="footer">IMC Repuestos</div>
 
     <script>
-        function toggleMenu() {
-            document.getElementById('sidebar').classList.toggle('active');
-        }
-        function closeMenu() {
-            document.getElementById('sidebar').classList.remove('active');
-        }
         function updateFileName() {
             const fileInput = document.getElementById('fileInput');
             const fileName = document.getElementById('fileName');
-            const fileList = document.getElementById('fileList');
             if (fileInput.files.length > 0) {
-                const file = fileInput.files[0];
+                fileName.textContent = fileInput.files[0].name;
+            } else {
                 fileName.textContent = "Sin archivo seleccionado";
-                const timestamp = new Date().toLocaleString();
-                let listItem = document.createElement("li");
-                listItem.textContent = `${file.name} - ${timestamp}`;
-                fileList.appendChild(listItem);
             }
-        }
-        function toggleFileList() {
-            document.querySelector('.file-list').classList.toggle('active');
         }
     </script>
 </body>
