@@ -170,10 +170,30 @@
             fileName.textContent = fileInput.files.length > 0 ? fileInput.files[0].name : "Sin archivo seleccionado";
         }
         function processExcel() {
-            alert("Función processExcel ejecutada correctamente.");
-        }
-        function clearSearch() {
-            document.getElementById('search').value = "";
+            const fileInput = document.getElementById('fileInput');
+            const tableBody = document.getElementById('tableBody');
+            if (fileInput.files.length === 0) {
+                alert("Por favor, selecciona un archivo Excel.");
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const data = new Uint8Array(e.target.result);
+                const workbook = XLSX.read(data, { type: 'array' });
+                const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                const jsonData = XLSX.utils.sheet_to_json(sheet);
+                tableBody.innerHTML = "";
+                jsonData.forEach(row => {
+                    let tr = document.createElement("tr");
+                    Object.values(row).forEach(value => {
+                        let td = document.createElement("td");
+                        td.textContent = value;
+                        tr.appendChild(td);
+                    });
+                    tableBody.appendChild(tr);
+                });
+            };
+            reader.readAsArrayBuffer(fileInput.files[0]);
         }
     </script>
 </body>
