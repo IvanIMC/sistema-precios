@@ -1,39 +1,78 @@
 body {
-    background: #dceefc;
-    color: #333;
+    background: #eaf5fd;
     font-family: 'Arial', sans-serif;
 }
+
 .sidebar {
     height: 100vh;
-    background: #3a3a3a;
+    background: #343a40;
     padding: 20px;
     position: fixed;
     width: 250px;
-    top: 0;
     left: -260px;
     transition: all 0.3s;
-    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 0 10px rgba(0,0,0,0.5);
+    overflow-y: auto;
+    z-index: 1000;
 }
+
 .sidebar.active {
     left: 0;
 }
+
 .menu-btn {
     position: fixed;
-    left: 10px;
     top: 10px;
-    background: #165a96;
+    left: 10px;
+    background: #007bff;
     color: white;
     padding: 10px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    z-index: 1100;
 }
+
+.content {
+    padding: 20px;
+    margin-left: 0;
+    transition: margin-left 0.3s;
+}
+
+.content.shift {
+    margin-left: 260px;
+}
+
+.table-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
 .footer {
-    background: #165a96;
+    background: #007bff;
     color: white;
     text-align: center;
     padding: 10px;
-    margin-top: 40px;
-    font-size: 14px;
-    border-top: 3px solid #165a96;
+    margin-top: 30px;
 }
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+.accordion-button {
+    background-color: #212529;
+    color: white;
+}
+

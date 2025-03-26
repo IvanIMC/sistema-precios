@@ -1,21 +1,31 @@
-# Sistema de Precios - IMC Repuestos
+# Sistema de Precios IMC
 
-Este es un sistema web para gestionar y comparar precios de repuestos de distintos proveedores.
+Este proyecto permite cargar archivos Excel (.xlsx) de listas de precios y visualizarlos en una tabla interactiva con paginación, historial y búsqueda.
 
-## 📌 Características:
-- 🚀 Búsqueda en tiempo real de códigos de repuestos.
-- 📂 Carga de listas en formato Excel.
-- 🎨 Diseño responsivo y profesional.
+## Funcionalidades
 
-## 🛠️ Instalación
-1. **Clonar el repositorio:**
-2. **Subir a Render y desplegar.**
+- Carga de archivos Excel (.xlsx)
+- Visualización en tabla
+- Búsqueda por código
+- Paginación
+- Historial local de archivos cargados
+- Sidebar animada
+- Interfaz responsiva con Bootstrap
 
-## 🌐 Tecnologías usadas:
-- HTML / CSS / JavaScript
-- Bootstrap 5
-- XLSX.js para manejar archivos Excel
+## Estructura
 
-## 📬 Contacto
-Si necesitas ayuda, contáctanos en: soporte@imcrepuestos.com
 
+## Librerías utilizadas
+
+- [Bootstrap 5.3](https://getbootstrap.com/)
+- [SheetJS](https://github.com/SheetJS/sheetjs)
+
+## Cómo usarlo
+
+1. Subí un archivo Excel desde el botón.
+2. Cargalo y visualizá la tabla.
+3. Filtrá por código o revisá el historial de cargas.
+
+---
+
+**IMC Repuestos © 2025**
